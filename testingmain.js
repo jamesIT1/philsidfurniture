@@ -32,11 +32,11 @@ document.addEventListener('DOMContentLoaded', function() {
             updateSlidePosition();
         }
 
-        let autoSlideInterval = setInterval(nextSlide, 3000);
+        let autoSlideInterval = setInterval(nextSlide, 1500);
 
         carouselContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
         carouselContainer.addEventListener('mouseleave', () => {
-            autoSlideInterval = setInterval(nextSlide, 3000);
+            autoSlideInterval = setInterval(nextSlide, 1500);
         });
 
         window.addEventListener('resize', updateSlidePosition);
