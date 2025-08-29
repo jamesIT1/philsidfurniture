@@ -26,6 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (isDropdownToggle) {
                 e.preventDefault(); // Prevent anchor scroll
+
+                // Close other open dropdowns
+                navMenu.querySelectorAll('.dropdown.open').forEach(dropdown => {
+                    if (dropdown !== parentNavItem) {
+                        dropdown.classList.remove('open');
+                    }
+                });
+
+                // Now, toggle the clicked one
                 parentNavItem.classList.toggle('open');
             } else {
                 // This is a regular link or a link inside a dropdown
