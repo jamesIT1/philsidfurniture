@@ -7,13 +7,15 @@ document.addEventListener('DOMContentLoaded', function() {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
-            // When closing hamburger, also close dropdowns
+
+            // When closing the main menu, also close any open dropdowns
             if (!navMenu.classList.contains('active')) {
-                navMenu.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+                dropdowns.forEach(d => d.classList.remove('active'));
             }
         });
+    }
 
-       // Dropdown logic for mobile
+    // Dropdown logic for mobile
     if (hamburger && dropdowns.length > 0) {
         dropdowns.forEach(dropdown => {
             const link = dropdown.querySelector('.nav-link');
@@ -29,26 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Then toggle the clicked one.
                     dropdown.classList.toggle('active');
-                }
-            });
-        });
-    }
-
-    // Close mobile menu when a navigation link is clicked
-    if (hamburger && navMenu) {
-        const allNavLinks = document.querySelectorAll('.nav-menu a');
-        allNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                const isMobileView = getComputedStyle(hamburger).display !== 'none';
-                if (isMobileView && navMenu.classList.contains('active')) {
-                    const isDropdownToggle = link.classList.contains('nav-link') && link.closest('.nav-item.dropdown');
-
-                    if (!isDropdownToggle) {
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
-                        // Ensure any open sub-menus are also closed
-                        dropdowns.forEach(d => d.classList.remove('active'));
-                    }
                 }
             });
         });
