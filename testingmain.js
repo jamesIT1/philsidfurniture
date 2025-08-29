@@ -27,15 +27,17 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isDropdownToggle) {
                 e.preventDefault(); // Prevent anchor scroll
 
-                // Close other open dropdowns
+                const clickedItemIsOpen = parentNavItem.classList.contains('open');
+
+                // First, close all dropdowns
                 navMenu.querySelectorAll('.dropdown.open').forEach(dropdown => {
-                    if (dropdown !== parentNavItem) {
-                        dropdown.classList.remove('open');
-                    }
+                    dropdown.classList.remove('open');
                 });
 
-                // Now, toggle the clicked one
-                parentNavItem.classList.toggle('open');
+                // If the clicked item was not already open, open it.
+                if (!clickedItemIsOpen) {
+                    parentNavItem.classList.add('open');
+                }
             } else {
                 // This is a regular link or a link inside a dropdown
                 hamburger.classList.remove('active');
