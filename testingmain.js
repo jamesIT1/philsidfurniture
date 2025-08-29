@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
+    const dropdowns = document.querySelectorAll('.nav-menu .dropdown');
     
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
