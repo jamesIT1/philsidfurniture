@@ -364,6 +364,37 @@ body {
         width: 100%;
         text-align: center;
     }
+
+    .dropdown .nav-link i {
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown.open .nav-link i {
+        transform: rotate(180deg);
+    }
+
+    .dropdown-content {
+        position: static;
+        display: none;
+        background: #f0f0f0;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        min-width: auto;
+        border: none;
+        margin-top: 0.5rem;
+    }
+
+    .dropdown.open .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a {
+        padding: 1rem 1.5rem;
+    }
 }
 
 /* Focus states for accessibility */
