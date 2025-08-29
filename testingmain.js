@@ -8,6 +8,17 @@ document.addEventListener('DOMContentLoaded', function() {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
+
+        // Close menu on link click
+        const navLinks = navMenu.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (hamburger.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
     }
 
     // Carousel
@@ -32,11 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
             updateSlidePosition();
         }
 
-        let autoSlideInterval = setInterval(nextSlide, 1500);
+        let autoSlideInterval = setInterval(nextSlide, 3000);
 
         carouselContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
         carouselContainer.addEventListener('mouseleave', () => {
-            autoSlideInterval = setInterval(nextSlide, 1500);
+            autoSlideInterval = setInterval(nextSlide, 3000);
         });
 
         window.addEventListener('resize', updateSlidePosition);
