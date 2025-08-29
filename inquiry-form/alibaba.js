@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const productNameEl = productInfoContainer.querySelector('strong');
 
     if (productImgEl) {
-      productImgEl.src = productImage;
+      productImgEl.src = fixGithubImage(productImage); // ✅ auto-fix link
       productImgEl.alt = productName;
     }
     if (productNameEl) {
@@ -34,7 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
     message.style.color = "#444";
 
     const productImg = document.querySelector("#product-info img");
-    const imageUrl = productImg ? productImg.src : "";
+    let imageUrl = productImg ? productImg.src : "";
+
+    // ✅ Always fix GitHub links
+    imageUrl = fixGithubImage(imageUrl);
 
     const data = {
       name: form.name.value,
@@ -45,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbx--ckuN3_NfifFk2BbnATTP63tYeIhpMmJW45orIcOzcaRLC_0EF8ymanY8Gfai1hW/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbzLrvFnNkguXsPK6hbgB8c_ZAjr8qR9Lm2jdf2j4KKLSkkRnfbVW-ny0G0SYnd1dG9R/exec", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "text/plain" }
@@ -63,3 +66,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// 🔹 Helper function to fix GitHub blob → raw link
+function fixGithubImage(url) {
+  // Case 1: Already a GitHub blob URL → convert to raw
+  if (url.includes("github.com") && url.includes("/blob/")) {
+    return url.replace("github.com", "raw.githubusercontent.com").replace("/blob/", "/");
+  }
+
+  // Case 2: Localhost or 127.0.0.1 (during dev) → map to your repo
+  if (url.includes("127.0.0.1") || url.includes("localhost")) {
+    // Extract just the filename
+    const fileName = url.split("/").pop();
+    return `https://raw.githubusercontent.com/jamesIT1/philsidfurniture/main/${fileName}`;
+  }
+
+  // Otherwise, return as is
+  return url;
+}
