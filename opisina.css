@@ -747,7 +747,7 @@ nav {
         padding: 1.5rem;
     }
 
-    .tagline {
-        display: none; /* Hide tagline on smaller screens */
-    }
+    
 }
+
+* { outline: 1px solid red; }
