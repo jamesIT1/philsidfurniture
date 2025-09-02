@@ -147,7 +147,7 @@ nav {
 
 .hero h1 {
     font-family: 'Roboto Condensed', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: 3.5rem;
     margin-bottom: 1rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -474,6 +474,7 @@ nav {
 .partners-container {
     max-width: 1400px;
     margin: 0 auto;
+    
 }
 .partners-logos {
     display: flex;
@@ -481,6 +482,7 @@ nav {
     align-items: center;
     gap: 3rem;
     flex-wrap: wrap;
+    
 }
 .partner-logo img {
     max-height: 50px;
@@ -489,6 +491,7 @@ nav {
     transition: all 0.3s ease;
     filter: grayscale(100%);
     opacity: 0.7;
+    
 }
 .partner-logo:hover img {
     filter: grayscale(0%);
@@ -750,5 +753,10 @@ nav {
 
     .tagline {
         display: none; /* Hide tagline on smaller screens */
+    padding: 1.5rem ;}
+}      
+    
+
+    .tagline {
+        display: none; /* Hide tagline on smaller screens */
     }
-}
