@@ -739,7 +739,7 @@ nav {
 
 
 /* Responsive */
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
     .modal-details {
         grid-template-columns: 1fr;
         text-align: center;
