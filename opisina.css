@@ -753,10 +753,3 @@ nav {
         display: none; /* Hide tagline on smaller screens */
     }
 }
-
-/* Override for mobile devices that don't have hover capabilities */
-@media (hover: none) and (pointer: coarse) {
-    .container, .partners-container, .footer-container {
-        max-width: none; /* Remove the max-width constraint */
-    }
-}
