@@ -419,8 +419,7 @@ nav {
 .modal-image {
     width: 100%;
     height: auto;
-    max-height: 400px;
-    object-fit: cover;
+    max-width: 100%;
     border-radius: var(--border-radius);
 }
 
@@ -749,7 +748,5 @@ nav {
         padding: 1.5rem;
     }
 
-    .tagline {
-        display: none; /* Hide tagline on smaller screens */
-    }
+    
 }
