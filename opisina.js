@@ -63,11 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const modalDescription = document.getElementById('modalDescription');
         const modalPrice = document.getElementById('modalPrice');
 
-        document.querySelectorAll('.quick-view').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const card = e.target.closest('.product-card');
-                
+        productCards.forEach(card => {
+            card.addEventListener('click', () => {
                 // Populate modal with data from the card
                 modalTitle.textContent = card.querySelector('.product-title').textContent;
                 modalDescription.textContent = card.querySelector('.product-description').textContent;
