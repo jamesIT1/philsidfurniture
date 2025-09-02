@@ -126,6 +126,8 @@ nav {
     align-items: center;
     justify-content: center;
     animation: backgroundPan 15s ease infinite;
+    position: relative;
+    overflow: hidden;
 }
 
 @keyframes backgroundPan {
@@ -750,4 +752,4 @@ nav {
     
 }
 
-* { outline: 1px solid red; }
+
