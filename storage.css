@@ -773,6 +773,15 @@ nav {
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .footer {
+        padding: 3rem 1rem;
+    }
+
     .nav-collapsible {
         display: none;
         position: absolute;
