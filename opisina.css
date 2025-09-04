@@ -233,7 +233,7 @@ nav {
     color: var(--light-color);
     border-color: gray;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 5px 15px rgba(68, 70, 80, 0.3);
 }
 
 .product-grid {
@@ -740,6 +740,11 @@ nav {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .hero {
+        background-size: cover;
+        animation: none;
+    }
+
     .modal-details {
         grid-template-columns: 1fr;
         text-align: center;
