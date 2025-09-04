@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Adjust main content padding to account for fixed header
+    const header = document.querySelector('header');
+    const main = document.querySelector('main');
+    if (header && main) {
+        // Use ResizeObserver to dynamically adjust padding when header height changes
+        const headerObserver = new ResizeObserver(() => {
+            main.style.paddingTop = `${header.offsetHeight}px`;
+        });
+        headerObserver.observe(header);
+    }
+
     // Filter functionality
     const filterTabs = document.querySelectorAll('.filter-tab');
     const productCards = document.querySelectorAll('.product-card');
