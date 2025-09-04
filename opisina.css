@@ -26,7 +26,7 @@ html, body {
     line-height: 1.7;
     color: var(--text-color);
     background: var(--bg-color);
-    overflow-x: hidden;
+    /* overflow-x: hidden; */ /* Temporarily disabled for debugging */
 }
 
 .container {
@@ -619,7 +619,7 @@ nav {
 .form-group textarea:focus {
     outline: none;
     border-color: gray;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    box-shadow: inset 0 0 0 3px rgba(102, 126, 234, 0.2);
 }
 .form-group textarea {
     resize: vertical;
@@ -753,6 +753,15 @@ nav {
         background-size: cover;
     }
 
+    .footer {
+        padding: 2rem 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
     .modal-details {
         grid-template-columns: 1fr;
         text-align: center;
@@ -764,6 +773,10 @@ nav {
     
     .modal-content {
         padding: 1.5rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
     }
 
     
