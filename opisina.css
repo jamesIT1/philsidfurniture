@@ -117,7 +117,7 @@ nav {
 /* Hero Section */
 .hero {
     background: url('PS-OF4.5.jpg') no-repeat center center/cover;
-    background-size: 150% 150%;
+    background-size: 150% auto;
     color: var(--light-color);
     text-align: center;
     padding: 12rem 0 12rem;
@@ -698,9 +698,17 @@ nav {
         margin-bottom: 1rem;
     }
 
-    .nav-container {
+    nav.container {
         flex-wrap: wrap;
+        row-gap: 1rem;
     }
+}
+
+@media screen and (max-width: 480px) {
+    nav.container {
+        justify-content: center;
+    }
+   
 }
 
 /* Scroll-to-top button styles */
@@ -741,8 +749,8 @@ nav {
 /* Responsive */
 @media (max-width: 768px) {
     .hero {
+        padding: 8rem 2rem;
         background-size: cover;
-        animation: none;
     }
 
     .modal-details {
