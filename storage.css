@@ -174,7 +174,7 @@ nav {
 .hero-actions .explore-btn {
     background: transparent;
     border: 1px solid #ddd;
-    color: var(--dark-color);
+    color: white;
     padding: 0.5rem 1rem;
     border-radius: 6px;
     font-size: 14px;
@@ -740,6 +740,7 @@ nav {
     cursor: pointer;
     color: var(--dark-color);
     z-index: 1001;
+    margin-left: 2rem;
 }
 
 @media (max-width: 992px) {
@@ -767,21 +768,12 @@ nav {
     .nav-collapsible {
         gap: 1rem;
     }
-    .tagline {
-        display: none;
-    }
+   .tagline {
+    font-size: 18px;
+   }
 }
 
 @media (max-width: 768px) {
-    .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
-    .footer {
-        padding: 3rem 1rem;
-    }
-
     .nav-collapsible {
         display: none;
         position: absolute;
@@ -847,6 +839,12 @@ nav {
         grid-template-columns: 1fr;
     }
 
+    .hero {
+        padding: 10rem 0 8rem;
+        background-size: cover;
+        animation: none;
+    }
+
     .hero h1 {
         font-size: clamp(2.5rem, 8vw, 3.5rem);
     }
@@ -862,8 +860,5 @@ nav {
     .partners-logos {
         gap: 2rem;
     }
-    
-    .tagline {
-        display: none;
-    }
+     
 }
