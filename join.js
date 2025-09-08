@@ -239,6 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert(`The text "${query}" was not found on this page.`);
             }
             searchInput.blur();
+            closeNav(); // Close nav after search
         };
 
         searchBtn.addEventListener('click', e => {
@@ -254,6 +255,41 @@ document.addEventListener('DOMContentLoaded', () => {
             if (searchInput.value.trim() === '') {
                 removeSearchHighlights();
             }
+        });
+    }
+
+    const navToggle = document.querySelector('.nav-toggle');
+    const navCollapsible = document.querySelector('.nav-collapsible');
+
+    const closeNav = () => {
+        if (navCollapsible.classList.contains('nav-visible')) {
+            navCollapsible.classList.remove('nav-visible');
+            const icon = navToggle.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+    };
+
+    const mainContent = document.querySelector('main');
+    if (mainContent) {
+        mainContent.addEventListener('click', closeNav);
+    }
+
+    if (navToggle && navCollapsible) {
+        navToggle.addEventListener('click', () => {
+            navCollapsible.classList.toggle('nav-visible');
+            const icon = navToggle.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            }
+        });
+
+        const navLinks = navCollapsible.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeNav);
         });
     }
 });
