@@ -7,55 +7,67 @@
   <link rel="stylesheet" href="alibaba.css"/>
 </head>
 <body>
-  <div class="form-container">
-    <h2>Contact Supplier</h2>
-    <p class="supplier-to">To: <strong>PhilSid Enterprise</strong></p>
-
-    <!-- Product Info -->
-    <div class="product-info" id="product-info">
-      <img src="https://via.placeholder.com/120" alt="Product">
-      <div>
-        <p><strong>Sample Product Name</strong></p>
-        <p>General Inquiry</p>
-      </div>
+  <header class="site-header">
+    <div class="nav-container">
+        <a href="../index.html" class="nav-logo">
+            <span class="logo-text">PhilSid</span><br>
+            <span class="logo-sub">Concept & Design Inc.</span>
+        </a>
+        <span class="tagline">Every space matters.</span>
     </div>
+  </header>
 
-    <!-- Form -->
-    <form id="inquiry-form">
-      <div class="form-group">
-        <label for="name">Your Name <span class="required">*</span></label>
-        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+  <main>
+    <div class="form-container">
+      <h2>Contact Supplier</h2>
+      <p class="supplier-to">To: <strong>PhilSid Enterprise</strong></p>
+
+      <!-- Product Info -->
+      <div class="product-info" id="product-info">
+        <img src="https://via.placeholder.com/120" alt="Product">
+        <div>
+          <p><strong>Sample Product Name</strong></p>
+          <p>General Inquiry</p>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="email">Your Email <span class="required">*</span></label>
-        <input type="email" id="email" name="email" placeholder="example@email.com" required>
-      </div>
+      <!-- Form -->
+      <form id="inquiry-form">
+        <div class="form-group">
+          <label for="name">Your Name <span class="required">*</span></label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        </div>
 
-      <div class="form-group">
-        <label for="quantity">Quantity</label>
-        <input type="number" id="quantity" name="quantity" min="1" value="1">
-      </div>
+        <div class="form-group">
+          <label for="email">Your Email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" placeholder="example@email.com" required>
+        </div>
 
-      <div class="form-group">
-        <label for="requirements">* Detailed Requirements</label>
-        <textarea id="requirements" name="requirements" rows="5" placeholder="Enter product details such as color, size, materials etc. and other specification requirements to receive an accurate quote." required></textarea>
-      </div>
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input type="number" id="quantity" name="quantity" min="1" value="1">
+        </div>
 
-      <!-- Suggested Questions -->
-      <div class="suggested-questions">
-        <p>Quick insert:</p>
-        <button type="button" class="question-btn">What is the best price you can offer?</button>
-        <button type="button" class="question-btn">What is the shipping cost?</button>
-        <button type="button" class="question-btn">Do you support customization?</button>
-        <button type="button" class="question-btn">How long will it take to ship to my country?</button>
-      </div>
+        <div class="form-group">
+          <label for="requirements">* Detailed Requirements</label>
+          <textarea id="requirements" name="requirements" rows="5" placeholder="Enter product details such as color, size, materials etc. and other specification requirements to receive an accurate quote." required></textarea>
+        </div>
 
-      <button type="submit" class="submit-btn">📩 Send Inquiry</button>
-    </form>
+        <!-- Suggested Questions -->
+        <div class="suggested-questions">
+          <p>Quick insert:</p>
+          <button type="button" class="question-btn">What is the best price you can offer?</button>
+          <button type="button" class="question-btn">What is the shipping cost?</button>
+          <button type="button" class="question-btn">Do you support customization?</button>
+          <button type="button" class="question-btn">How long will it take to ship to my country?</button>
+        </div>
 
-    <p id="form-message"></p>
-  </div>
+        <button type="submit" class="submit-btn">📩 Send Inquiry</button>
+      </form>
+
+      <p id="form-message"></p>
+    </div>
+  </main>
 
   <script src="alibaba.js"></script>
 </body>
