@@ -1,59 +1,81 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Desktop dropdown (click-based)
+    document.addEventListener('click', e => {
+        // Don't run on mobile where hamburger menu is active
+        if (window.innerWidth <= 768) return;
+
+        const isDropdownButton = e.target.matches('.nav-link') && e.target.closest('.dropdown');
+
+        // If click is outside a dropdown, close all open dropdowns
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown.open').forEach(dropdown => {
+                dropdown.classList.remove('open');
+            });
+        }
+
+        // If a dropdown toggle is clicked
+        if (isDropdownButton) {
+            e.preventDefault(); // Prevent anchor link navigation
+            const currentDropdown = e.target.closest('.dropdown');
+
+            // Close any other open dropdowns
+            document.querySelectorAll('.dropdown.open').forEach(dropdown => {
+                if (dropdown !== currentDropdown) {
+                    dropdown.classList.remove('open');
+                }
+            });
+
+            // Toggle the clicked dropdown
+            currentDropdown.classList.toggle('open');
+        }
+    });
+
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-    const dropdowns = document.querySelectorAll('.nav-menu .dropdown');
     
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
-
-            // When closing the main menu, also close any open dropdowns
+            // When closing hamburger, also close dropdowns
             if (!navMenu.classList.contains('active')) {
-                dropdowns.forEach(d => d.classList.remove('active'));
+                navMenu.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
             }
         });
-    }
 
-    // Dropdown logic for mobile
-    if (hamburger && dropdowns.length > 0) {
-        dropdowns.forEach(dropdown => {
-            const link = dropdown.querySelector('.nav-link');
-            link.addEventListener('click', (event) => {
-                const isMobileView = getComputedStyle(hamburger).display !== 'none';
-                if (isMobileView) {
-                    event.preventDefault();
-                    
-                    // If the clicked dropdown is not active, close others first.
-                    if (!dropdown.classList.contains('active')) {
-                        dropdowns.forEach(d => d.classList.remove('active'));
-                    }
-                    
-                    // Then toggle the clicked one.
-                    dropdown.classList.toggle('active');
+        navMenu.addEventListener('click', (e) => {
+            if (!navMenu.classList.contains('active')) return; // Only apply to open mobile menu
+
+            const link = e.target.closest('a');
+            if (!link) return;
+
+            const parentNavItem = link.closest('.nav-item');
+            if (!parentNavItem) return;
+
+            const isDropdownToggle = parentNavItem.classList.contains('dropdown') && link.classList.contains('nav-link');
+
+            if (isDropdownToggle) {
+                e.preventDefault(); // Prevent anchor scroll
+
+                const clickedItemIsOpen = parentNavItem.classList.contains('open');
+
+                // First, close all dropdowns
+                navMenu.querySelectorAll('.dropdown.open').forEach(dropdown => {
+                    dropdown.classList.remove('open');
+                });
+
+                // If the clicked item was not already open, open it.
+                if (!clickedItemIsOpen) {
+                    parentNavItem.classList.add('open');
                 }
-            });
-        });
-    }
-
-    // Close mobile menu when a navigation link is clicked
-    if (hamburger && navMenu) {
-        const allNavLinks = document.querySelectorAll('.nav-menu a');
-        allNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                const isMobileView = getComputedStyle(hamburger).display !== 'none';
-                if (isMobileView && navMenu.classList.contains('active')) {
-                    const isDropdownToggle = link.classList.contains('nav-link') && link.closest('.nav-item.dropdown');
-
-                    if (!isDropdownToggle) {
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
-                        // Ensure any open sub-menus are also closed
-                        dropdowns.forEach(d => d.classList.remove('active'));
-                    }
-                }
-            });
+            } else {
+                // This is a regular link or a link inside a dropdown
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                // Ensure all dropdowns are visually closed
+                navMenu.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+            }
         });
     }
 
@@ -219,7 +241,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         scrollTopBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
