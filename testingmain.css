@@ -44,7 +44,7 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-image: url(H1.jpg);
+    background-image: url('Backgroundimg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -140,7 +140,7 @@ body {
     transition: transform 0.3s ease;
 }
 
-.dropdown:hover .nav-link i {
+.dropdown.open .nav-link i {
     transform: rotate(180deg);
 }
 
@@ -161,7 +161,7 @@ body {
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown.open .dropdown-content {
     display: block;
     opacity: 1;
     visibility: visible;
@@ -295,8 +295,19 @@ body {
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
+    #features-container,
+    #aboutUs,
+    #contactForm {
+        scroll-margin-top: 80px; /* Offset for fixed header on scroll */
+    }
+
     .tagline {
-        display: none;
+        display: block;
+        flex-grow: 1;
+        text-align: center;
+        font-size: 1.1rem;
+        margin-left: 0;
+        padding: 0 10px;
     }
 
     .nav-menu {
@@ -334,6 +345,37 @@ body {
 
     .hamburger.active span:nth-child(3) {
         transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .dropdown .nav-link i {
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown.open .nav-link i {
+        transform: rotate(180deg);
+    }
+
+    .dropdown-content {
+        position: static;
+        display: none;
+        background: #f0f0f0;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        min-width: auto;
+        border: none;
+        margin-top: 0.5rem;
+    }
+
+    .dropdown.open .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a {
+        padding: 1rem 1.5rem;
     }
 
     .nav-actions {
