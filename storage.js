@@ -110,6 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Close nav when clicking on main content
+    const mainContent = document.querySelector('main');
+    if (mainContent) {
+        mainContent.addEventListener('click', closeNav);
+    }
+
     // Search functionality with highlighting & smooth scroll
     const searchBtn = document.querySelector('.search-btn');
     const searchInput = document.querySelector('.search-input');
